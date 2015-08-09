@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+		"-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+		"http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+
+	<constant name="struts.devMode" value="true" />
+
+	<!-- The package element is an important container for organizing actions, 
+		results, and other component elements. This package contains the non-secure 
+		portions of the Struts 2 Portfolio. This allows these public actions to share 
+		inheritance of things specialized to the non-secure portions of the application. 
+		Note, at this point, the Struts 2 Portfolio doesn't actually have any security 
+		functionality to check credentials or restrict access, but we have already 
+		packaged in a way that anticipates these needs. -->
+
+	<package name="Public" namespace="/" extends="struts-default">
+<!-- 		<global-results>
+			<result name="error">
+				/jsp/Error.jsp
+			</result>
+		</global-results>
+		<global-exception-mappings>
+			<exception-mapping result="error" exception="java.lang.Exception">
+				/jsp/Error.jsp
+			</exception-mapping>
+		</global-exception-mappings> -->	
+		<action name="PortfolioHomePage">
+			<result>/jsp/PortfolioHomePage.jsp</result>
+		</action>
+<!-- 		<action name="ViewPortfolios">
+			<result>/jsp/ViewPortfolios.jsp</result>			
+		</action>
+		<action name="LoginForm">
+			<result>/jsp/Login.jsp</result>
+		</action>
+		<action name="Login" class="com.strutstwoinaction.chapterfour.Login">
+			<result type="redirect">
+				/secure/AdminPortfolio.action
+			</result>
+			<result name="input">/jsp/Login.jsp</result>
+		</action> -->		
+		<action name="Registration">
+			<result>/jsp/Registration.jsp</result>
+		</action>
+		<action name="Register" class="com.strutstwoinaction.chapterfour.Register">
+			<result>/jsp/RegistrationSuccess.jsp</result>
+			<result name="input">/jsp/Registration.jsp</result>
+		</action>		
+<!-- 		<action name="ErrorProne" class="com.strutstwoinaction.chapterfour.ErrorProne">			
+		</action> -->		
+	</package>
+	
+	<!-- 
+		This package contains the secure portions of the Struts 2 Portfolio.  This allows these
+		secure actions to share inheritance of things specialized to the secure portions of the application.
+	-->
+	<package name="Secure" namespace="/secure" extends="struts-default">
+		<!-- We need to define the authentication interceptor and configure a new stack, based upon the 
+			builtin default stack.  We will simply add our authentication stack to the top of the default
+			stack and make it the default intercptor reference for the actions in this package.
+		-->	
+<!-- 		<interceptors>
+			<interceptor name="authenticationInterceptor" class="com.strutstwoinaction.chapterfour.Utils.AuthenticationInterceptor"/>
+			<interceptor-stack name="secureStack">
+				<interceptor-ref name="authenticationInterceptor"/>
+				<interceptor-ref name="defaultStack"/>
+			</interceptor-stack>
+		</interceptors>
+		<default-interceptor-ref name="secureStack"/> -->
+		
+<!-- 		<global-results>
+			<result name="login" type="redirect">
+				/jsp/LoginForm.action
+			</result>
+			<result name="error">/jsp/Error.jsp</result>
+		</global-results>
+		
+		<global-exception-mappings>
+			<exception-mapping result="error" exception="java.lang.Exception"/>
+		</global-exception-mappings> -->
+		
+		<action name="AdminPortfolio">
+			<result>/jsp/AdminPortfolio.jsp</result>
+		</action>
+		<action name="AddImage">
+			<result>/jsp/ImageUploadForm.jsp</result>
+		</action>
+
+		<action name="ImageUpload" class="com.strutstwoinaction.chapterfour.ImageUpload">
+			<param name="fileSystemPath">./portfolioFS/</param>
+			<result>/jsp/ImageAdded.jsp</result>
+			<result name="input">/jsp/ImageUploadForm.jsp</result>
+		</action>
+
+		<action name="RemoveImage">
+			<result>/jsp/ImageRemoved.jsp</result>
+		</action>
+	</package>
+
+</struts>
