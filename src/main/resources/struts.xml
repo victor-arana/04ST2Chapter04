@@ -15,16 +15,13 @@
 		packaged in a way that anticipates these needs. -->
 
 	<package name="Public" namespace="/" extends="struts-default">
-<!-- 		<global-results>
-			<result name="error">
-				/jsp/Error.jsp
-			</result>
+		<global-results>
+			<result name="error">/jsp/Error.jsp	</result>
 		</global-results>
+
 		<global-exception-mappings>
-			<exception-mapping result="error" exception="java.lang.Exception">
-				/jsp/Error.jsp
-			</exception-mapping>
-		</global-exception-mappings> -->	
+			<exception-mapping result="error" exception="java.lang.Exception">/jsp/Error.jsp</exception-mapping>
+		</global-exception-mappings>	
 		<action name="PortfolioHomePage">
 			<result>/jsp/PortfolioHomePage.jsp</result>
 		</action>
@@ -50,8 +47,8 @@
 			<result>/jsp/RegistrationSuccess.jsp</result>
 			<result name="input">/jsp/Registration.jsp</result>
 		</action>		
-<!-- 		<action name="ErrorProne" class="com.strutstwoinaction.chapterfour.ErrorProne">			
-		</action> -->		
+		<action name="ErrorProne" class="com.strutstwoinaction.chapterfour.ErrorProne">			
+		</action>		
 	</package>
 	
 	<!-- 
