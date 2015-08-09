@@ -44,6 +44,9 @@
 			<result>/jsp/Registration.jsp</result>
 		</action>
 		<action name="Register" class="com.strutstwoinaction.chapterfour.Register">
+			<interceptor-ref name="timer"/>
+			<interceptor-ref name="logger"/>
+			<interceptor-ref name="defaultStack"/>
 			<result>/jsp/RegistrationSuccess.jsp</result>
 			<result name="input">/jsp/Registration.jsp</result>
 		</action>		
