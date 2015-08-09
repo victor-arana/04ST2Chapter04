@@ -25,7 +25,7 @@
 		<action name="PortfolioHomePage">
 			<result>/jsp/PortfolioHomePage.jsp</result>
 		</action>
-<!-- 		<action name="ViewPortfolios">
+		<action name="ViewPortfolios">
 			<result>/jsp/ViewPortfolios.jsp</result>			
 		</action>
 		<action name="LoginForm">
@@ -36,7 +36,7 @@
 				/secure/AdminPortfolio.action
 			</result>
 			<result name="input">/jsp/Login.jsp</result>
-		</action> -->		
+		</action>		
 		<action name="Registration">
 			<result>/jsp/Registration.jsp</result>
 		</action>
@@ -60,25 +60,25 @@
 			builtin default stack.  We will simply add our authentication stack to the top of the default
 			stack and make it the default intercptor reference for the actions in this package.
 		-->	
-<!-- 		<interceptors>
-			<interceptor name="authenticationInterceptor" class="com.strutstwoinaction.chapterfour.Utils.AuthenticationInterceptor"/>
+ 		<interceptors>
+			<interceptor name="authenticationInterceptor" class="com.strutstwoinaction.chapterfour.utils.AuthenticationInterceptor"/>
 			<interceptor-stack name="secureStack">
+				<interceptor-ref name="timer"/>
+				<interceptor-ref name="logger"/>
 				<interceptor-ref name="authenticationInterceptor"/>
 				<interceptor-ref name="defaultStack"/>
 			</interceptor-stack>
 		</interceptors>
-		<default-interceptor-ref name="secureStack"/> -->
+		<default-interceptor-ref name="secureStack"/>
 		
-<!-- 		<global-results>
-			<result name="login" type="redirect">
-				/jsp/LoginForm.action
-			</result>
+ 		<global-results>
+			<result name="login" type="redirect">/jsp/LoginForm.action</result>
 			<result name="error">/jsp/Error.jsp</result>
 		</global-results>
 		
 		<global-exception-mappings>
 			<exception-mapping result="error" exception="java.lang.Exception"/>
-		</global-exception-mappings> -->
+		</global-exception-mappings>
 		
 		<action name="AdminPortfolio">
 			<result>/jsp/AdminPortfolio.jsp</result>
